@@ -1,0 +1,15 @@
+
+  
+  .agregar{
+    font-size: 0.7 rem;
+    background-color:#e439bf;
+    size: 1rem;
+    text-align: center;
+  }
+  
+  .disminuir {
+    font-size: 0.7 rem;
+    background-color:#f75e5e;
+    size: 0.8 rem;
+    text-align: center;
+  }
