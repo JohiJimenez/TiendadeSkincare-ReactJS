@@ -1,14 +1,10 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import './ItemCount.css'
 
 const ItemCount = ({initial, stock, onAdd}) => {
     const [count, setCount] = useState(initial)
     
-    useEffect(() => {
-        console.log ('tarda')
-    }, [])
-
 
     function Sumar (){
         if (count<stock){
