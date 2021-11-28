@@ -1,6 +1,7 @@
 //Info de cada Producto
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Item({item}) {
 
@@ -16,11 +17,14 @@ const funcionClick =(producto) => {
                onClick={() => funcionClick `${item}` }>
                 Detalle
                </button>
-               <img src={item.img} alt="" style= {{width:200 , height:200}}/>
+               <Link to={`/item/${item.id}`}>
+                  <img src={item.img} alt={item.nombre} style= {{width:200 , height:200}} />
+               </Link>
            </div>
 
     )
 }
+
 
 export default Item
 
