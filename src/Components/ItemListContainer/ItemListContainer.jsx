@@ -10,7 +10,7 @@ const ItemListContainer = () =>{
     const [productos, setProductos]= useState([]);
     const [loading, setLoading] = useState(true);
    
-    //Hacemos nuestra Promesa
+    //Hacemos nuestra Promesa y Capturamos la lista de Productos
       useEffect(() => {
           const getFetch = new Promise ((resolve, reject)=> {
               setTimeout(()=> {
@@ -23,6 +23,7 @@ const ItemListContainer = () =>{
   .finally (() => setLoading (false))
   }, [])
 
+  
 //Mensaje de Cargando mientras se ejecuta la Promesa y Luego enviamos la Lista de Productos al Componente ItemList
 
     return(
