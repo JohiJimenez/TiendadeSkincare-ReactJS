@@ -2,14 +2,20 @@ import React from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 
 export const ItemDetail = ({item}) => {
-    console.log('este es el prop de item')
     console.log(item)
+    function onAdd (cantidad){
+        console.log(cantidad)
 
-    return (
-        
-         <div>
+    }
+    
+    return ( 
+        <div className="Item">
+
+            <h4>{item.nombre}</h4>
+            <h5>  Precio: {item.precio}</h5>
             <p>{item.descripcion}</p>
-            <ItemCount stock={item.stock} id={item.id} />
+            <img src={item.img} alt="" style={{ width: 200, height: 200 }} />
+            <ItemCount initial={1} stock={item.stock} onAdd= {onAdd} />
         </div>
                 
     )

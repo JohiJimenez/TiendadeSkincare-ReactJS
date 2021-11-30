@@ -2,28 +2,24 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ItemDetailContainer from '../DetalleProducto/ItemDetailContainer'
 
 function Item({item}) {
-
-const funcionClick =(producto) => {
-   console.log (`click ${item}`)
-}
-
-  console.log (item)
+  
     return (
             <div className= "Item">
                <h3>{item.nombre}</h3>
-               <button className= "btn btn-primary" 
-               onClick={() => funcionClick `${item}` }>
-                Detalle
-               </button>
                <Link to={`/item/${item.id}`}>
-                  <img src={item.img} alt={item.nombre} style= {{width:200 , height:200}} />
+                  <button className= "btn btn-primary">
+                     Detalle 
+                  </button>
                </Link>
-           </div>
-
+                 <img src={item.img} alt={item.nombre} style= {{width:200 , height:200}} />
+            </div>
+           
     )
 }
+
 
 
 export default Item

@@ -6,41 +6,37 @@ import { ItemDetail } from '../DetalleProducto/ItemDetail';
 
 const ItemDetailContainer = () =>{
 
+      const [productoIndividual, setProductoIndividual]= useState({});
+      const [loading, setLoading] = useState(true);
+      const { itemIdParams } = useParams(); 
     
-    const [productoIndividual, setProductoIndividual]= useState({}); 
-    const [loading, setLoading] = useState(true);
-
-    const { itemIdParams } = useParams(); 
-  
-      useEffect(() => {
-          const promesa = new Promise ((resolve, reject) => {
-              setTimeout(()=> {
-                  resolve(ListaDeProductos.find(producto => producto.id === itemIdParams)) 
-              }, 2000)
-          })
-          promesa.then((prodEncontrado)=>{
-              console.log('OK');
-              setProductoIndividual(prodEncontrado) //prodEncontrado es un objeto! recuerden
-          })
-            .catch((error)=>{
-                console.log('ERROR');
+        useEffect(() => {
+            const promesaIndividual = new Promise ((resolve, reject)=> {
+                setTimeout(()=> {
+                    resolve(ListaDeProductos.find(producto => producto.id == itemIdParams)) 
+                }, 2000)
             })
-            .finally(()=>{
-                setLoading(false)
-            }
-            )
-        }, [itemIdParams])
-    
-
-    console.log(productoIndividual);
+            promesaIndividual.then((prodEncontrado)=>{
+                console.log('OK');
+                setProductoIndividual(prodEncontrado) //prodEncontrado es un objeto! recuerden
+            })
+              .catch((error)=>{
+                  console.log('ERROR');
+              })
+              .finally(()=>{
+                  setLoading(false)
+              }
+              )
+          }, [itemIdParams])
+  
 
     return(
     <>
-        <div>
+       <div>
             {loading ? <h1>Está ejecutandose Promesa del detalle</h1> 
                 : 
             <ItemDetail item={productoIndividual}/> }
-        </div>
+            </div>
     </>
     )
     };

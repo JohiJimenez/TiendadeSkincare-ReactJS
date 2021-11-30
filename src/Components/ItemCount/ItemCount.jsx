@@ -5,7 +5,7 @@ import './ItemCount.css'
 const ItemCount = ({initial, stock, onAdd}) => {
     const [count, setCount] = useState(initial)
     
-
+ 
     function Sumar (){
         if (count<stock){
             setCount (count+1)
