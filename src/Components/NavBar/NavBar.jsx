@@ -15,7 +15,7 @@ function NavBar() {
                   <Link to= "/categoria/marcas">Marcas</Link>
                 </li>
                 <li  className="navBar">
-                <Link to= "/categoria/contacto">Contactenos</Link>
+                <Link to= "/carrito">Carrito</Link>
                 </li>
             </ul>
         </nav>
