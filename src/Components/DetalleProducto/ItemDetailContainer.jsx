@@ -18,7 +18,7 @@ const ItemDetailContainer = () =>{
             })
             promesaIndividual.then((prodEncontrado)=>{
                 console.log('OK');
-                setProductoIndividual(prodEncontrado) //prodEncontrado es un objeto! recuerden
+                setProductoIndividual(prodEncontrado)
             })
               .catch((error)=>{
                   console.log('ERROR');
