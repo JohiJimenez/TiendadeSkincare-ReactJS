@@ -1,44 +1,29 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { ListaDeProductos } from '../ListaDeProductos/ListaDeProductos';
 import { useParams } from 'react-router-dom';
 import { ItemDetail } from '../DetalleProducto/ItemDetail';
+import getFirestore from '../../Firebase/firebase';
 
 const ItemDetailContainer = () =>{
 
       const [productoIndividual, setProductoIndividual]= useState({});
-      const [loading, setLoading] = useState(true);
-      const { itemIdParams } = useParams(); 
+     // const [loading, setLoading] = useState(true);
+     // const { itemIdParams } = useParams(); 
     
         useEffect(() => {
-            const promesaIndividual = new Promise ((resolve, reject)=> {
-                setTimeout(()=> {
-                    resolve(ListaDeProductos.find(producto => producto.id == itemIdParams)) 
-                }, 2000)
-            })
-            promesaIndividual.then((prodEncontrado)=>{
-                console.log('OK');
-                setProductoIndividual(prodEncontrado)
-            })
-              .catch((error)=>{
-                  console.log('ERROR');
-              })
-              .finally(()=>{
-                  setLoading(false)
-              }
-              )
-          }, [itemIdParams])
-  
+            const db = getFirestore()
+            const dbQuery = db.collection('productos').doc('51DCO6sY142gtXnv3NiY')
+            dbQuery.get()
+            .then(resp => setProductoIndividual({id: resp.id, ...resp.data()}))
+        }, [])
 
     return(
     <>
        <div>
-            {loading ? <h1>Está ejecutandose Promesa del detalle</h1> 
-                : 
-            <ItemDetail item={productoIndividual}/> }
-            </div>
+            <ItemDetail item={productoIndividual}/>
+        </div>
     </>
     )
-    };
+}
 
 export default ItemDetailContainer
