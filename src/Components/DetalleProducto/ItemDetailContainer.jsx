@@ -8,14 +8,14 @@ const ItemDetailContainer = () =>{
 
       const [productoIndividual, setProductoIndividual]= useState({});
      // const [loading, setLoading] = useState(true);
-     // const { itemIdParams } = useParams(); 
+     const { itemIdParams } = useParams(); 
     
         useEffect(() => {
             const db = getFirestore()
-            const dbQuery = db.collection('productos').doc('51DCO6sY142gtXnv3NiY')
+            const dbQuery = db.collection('productos').doc(itemIdParams)
             dbQuery.get()
             .then(resp => setProductoIndividual({id: resp.id, ...resp.data()}))
-        }, [])
+        }, [itemIdParams])
 
     return(
     <>
